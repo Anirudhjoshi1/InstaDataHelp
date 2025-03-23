@@ -1,0 +1,114 @@
+
+/* 🌟 Page Layout */
+.product-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fc;
+}
+
+/* 🌟 Main Content */
+.product-content {
+  flex: 1;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  width: 85%;
+}
+
+/* 🌟 Page Title */
+.product-title {
+  color: #2F4050;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-heading-logo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-logo{
+  width: 100px;
+}
+
+/* 🔍 Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  width: 50%;
+  margin: auto;
+}
+
+.search-icon {
+  color: #2F4050;
+  margin-right: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+/* 🌟 Trainee Section */
+.trainee-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.trainee-heading {
+  font-size: 18px;
+  color: #2F4050;
+  margin-bottom: 10px;
+}
+
+/* 🌟 Trainee Grid */
+.trainee-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* 🌟 Trainee Card */
+.trainee-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trainee-card:hover {
+  background: #007bff;
+  color: white;
+  transform: scale(1.05);
+}
+
+.trainee-card.active {
+  background: #28a745;
+  color: white;
+}
+
+.trainee-icon {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+/* 📌 No Results */
+.no-results {
+  font-size: 16px;
+  color: #888;
+  margin-top: 10px;
+}

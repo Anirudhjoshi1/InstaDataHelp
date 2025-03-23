@@ -1,0 +1,103 @@
+/* 🛠 Layout */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+  }
+  
+  /* Content Styling */
+  .content {
+    flex: 1;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 30px;
+  }
+  
+  /* Headings */
+  h1 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Styled Table */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background: #007bff;
+    color: white;
+  }
+  
+  /* Dropdown Select */
+  .trainer-select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  /* Buttons */
+  .edit-btn,
+  .delete-btn,
+  .save-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    margin: 0 5px;
+    transition: 0.3s;
+  }
+  
+  .edit-btn {
+    color: #007bff;
+  }
+  
+  .delete-btn {
+    color: #dc3545;
+  }
+  
+  .save-btn {
+    color: #28a745;
+  }
+  
+  /* Hover Effects */
+  .edit-btn:hover {
+    text-decoration: underline;
+  }
+  
+  .delete-btn:hover {
+    text-decoration: underline;
+  }
+  
+  .save-btn:hover {
+    text-decoration: underline;
+  }
+  

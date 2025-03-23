@@ -1,0 +1,112 @@
+/* Container Layout */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background: #f4f6f9;
+  }
+
+  .trainer-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .trainer-wrapper h1{
+    font-family: "poppins";
+    font-size: 30px;
+  }
+
+  .trainer-logo{
+    width: 100px;
+  }
+
+
+  /* Content Section */
+  .dashboard-content {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Title */
+  .dashboard-title {
+    font-size: 37px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Trainer Name */
+  .trainer-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #3F7D58;
+    text-align: center;
+    font-family: "poppins";
+  }
+  
+  /* Search Bar */
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: 20px auto;
+    border: 2px solid #3F7D58;
+    border-radius: 25px;
+    padding: 10px;
+    background: #FFFFFF;
+  }
+  
+  .search-icon {
+    font-size: 18px;
+    color: #007bff;
+    margin-right: 10px;
+  }
+  
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  /* Trainee List */
+  .trainees-heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .trainee-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .trainee-item {
+    background: #f8f9fa;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+  
+  .trainee-item:hover {
+    background: #3F7D58;
+  }
+  
+  .trainee-link {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    display: block;
+  }
+  
+  .trainee-item:hover .trainee-link {
+    color: #fff;
+  }
+  

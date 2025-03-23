@@ -1,0 +1,46 @@
+/* Main container */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+  }
+
+  .both-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  
+  /* Content area */
+  .content {
+    flex: 1;
+    padding: 0 ;
+    overflow-x: auto; /* Prevent overflow */
+  }
+  
+  /* Chart container */
+  .chart-container {
+    max-width: 80%; /* Prevents overflow */
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+  }
+  
+  /* Headings */
+  h1 {
+    color: #2f4050;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  /* Ensure the chart fits properly */
+  .recharts-wrapper {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+  }
+  

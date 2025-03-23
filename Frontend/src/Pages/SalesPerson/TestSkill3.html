@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexon Sales Trainer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding-top: 40px;
+        }
+
+        #logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #logo {
+            width: 150px; /* Adjust the size of the logo */
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        #app-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #screen {
+            width: 80%;
+            height: 60%;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        #buttons-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #7b72f0, #b6a6ff);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:disabled {
+            background: #d1d1d1;
+            cursor: not-allowed;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .animation {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            border-top: 6px solid #7b72f0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #text-input {
+            width: 80%;
+            padding: 12px 20px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 75%;
+        }
+
+        .chat-message.you {
+            background-color: #e2f0f9;
+            text-align: left;
+            border-left: 5px solid #00aaff;
+        }
+
+        .chat-message.evaluator {
+            background-color: #f4f6f9;
+            text-align: left;
+            border-left: 5px solid #7b72f0;
+        }
+
+        .feedback-section {
+            margin-top: 20px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .feedback-section b {
+            color: #4a4a4a;
+        }
+
+        .score {
+            color: #ff5722;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main-container">
+    <!-- Logo and Application Name -->
+    <div id="logo-container">
+        <img id="logo" src="400dpiLogo.jpg" alt="Logo"> <!-- Replace with your logo file path -->
+        <div id="app-name">Nexon Sales Trainer</div>
+    </div>
+
+    <div id="screen">
+        <div id="chat-text"></div>
+        <div id="analyzingAnimation" class="animation"></div>
+    </div>
+    <textarea id="text-input" placeholder="You can also type here" style="display:none;"></textarea>
+    <div id="buttons-container">
+        <button id="testSkillBtn" class="button" onclick="testSkill()">Test My Skill</button>
+        <button id="startTalkingBtn" class="button" onclick="startTalking()" disabled>Start Talking</button>
+        <button id="endTalkingBtn" class="button" onclick="endTalking()" disabled>End Talking</button>
+        <button id="submitBtn" class="button" onclick="submitAnswer()" disabled>Submit</button>
+    </div>
+</div>
+
+<script>
+    let recorder;
+    let audioData = [];
+    let isRecording = false;
+    let recognition; // For Speech Recognition
+    let responseData = [];
+
+    // Initialize Speech Recognition
+    if ('webkitSpeechRecognition' in window) {
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = true; // Continue listening
+        recognition.interimResults = true; // Allow partial results
+        recognition.lang = 'en-US';
+    }
+
+    function testSkill() {
+        const message = 'hi';
+        sendMessageToRag1(message);
+        document.getElementById('testSkillBtn').disabled = true;
+        document.getElementById('startTalkingBtn').disabled = false;
+        document.getElementById('analyzingAnimation').style.display = 'flex'; // Show loading animation
+    }
+
+
+    function sendMessageToRag(message) {
+    const llm_url = 'https://101.53.149.101/api/v1/workspace/tata-nexon-updated/thread/5be7a317-e8b3-4571-b8aa-5becf3b7a848/chat';
+    const headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer H56YD1H-4QDMHFX-QZN558T-3EV4Y03',
+        'Content-Type': 'application/json'
+    };
+    const data = { message: message, mode: 'query', userId: 1 };
+
+    fetch(llm_url, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('analyzingAnimation').style.display = 'none'; // Hide loading animation
+        const responseText = data.textResponse || "No response from API.";
+        document.getElementById('chat-text').innerHTML += `
+            <div class="chat-message evaluator">
+                <b>Evaluator:</b><br>
+                ${formatResponse(responseText)}
+            </div>`;
+        document.getElementById('startTalkingBtn').disabled = false;
+
+        // Extracting required fields from response
+        const date = new Date().toISOString().split('T')[0];
+        const time = new Date().toLocaleTimeString();
+        // const category = extractText(responseText, 'Category: ', 'Product Knowledge Score');
+        // const productKnowledgeScore = extractNumber(responseText, 'Product Knowledge Score: ', '/10');
+        // const salesAcumenScore = extractNumber(responseText, 'Sales Acumen Score: ', '/10');
+        //const feedback = extractFeedback(responseText);
+        const category = extractText(responseText, 'Category: ', '\n');
+        const productKnowledgeScore = extractNumber(responseText, 'Product Knowledge Score: ', '/10');
+        const salesAcumenScore = extractNumber(responseText, 'Sales Acumen Score: ', '/10');
+        const feedback = extractFeedback(responseText);
+
+
+
+        // Storing data
+       
+  //      responseData.push({
+  //          username: 'NexonSalesman',
+  //          date: date,
+  //          time: time,
+  //           productid: 'Nexon01',
+  //           productname: 'Nexon',
+  //          category: category,
+  //           productknowledgescore: productKnowledgeScore,
+  //         salesacumenscore: salesAcumenScore,
+  //          question: message,
+  //          userreply: message,
+  //          feedback: responseText,
+  //          attempt: responseData.length + 1
+  //      });
+        
+        // Reset responseData array to keep only the latest record
+responseData = [{
+    username: 'NexonSalesman',
+    date: date,
+    time: time,
+    productid: 'Nexon01',
+    productname: 'Nexon',
+    category: category,
+    productknowledgescore: productKnowledgeScore,
+    salesacumenscore: salesAcumenScore,
+    question: category,
+    userreply: message,
+    feedback: feedback,
+    attempt: 1 // Always 1 since we're only storing one record at a time
+}];
+
+
+        // Generate Excel File
+       // downloadExcel();
+        // Replace this line: downloadExcel();
+saveDataToMySQL(responseData[0]); // Sending only the latest record to MySQL
+
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('analyzingAnimation').style.display = 'none'; // Hide loading animation
+    });
+}
+
+function extractText(response, start, end) {
+    const regex = new RegExp(`${start}([\\s\\S]*?)${end}`);
+    const match = response.match(regex);
+    return match ? match[1].trim() : '';
+}
+
+function extractNumber(response, start, end) {
+    const regex = new RegExp(`${start}(\\d+)${end}`);
+    const match = response.match(regex);
+    return match ? parseInt(match[1], 10) : 0;
+}
+
+function extractFeedback(response) {
+    const feedbackStart = response.indexOf('Feedback:');
+    if (feedbackStart !== -1) {
+        return response.substring(feedbackStart).trim();
+    }
+    return '';
+}
+
+
+function downloadExcel() {
+    const ws = XLSX.utils.json_to_sheet(responseData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Responses");
+    XLSX.writeFile(wb, "Nexon_Sales_Responses.xlsx");
+}
+
+    
+
+    function formatResponse(responseText) {
+        // Properly format and structure the API response
+        return responseText
+            .replace('**Product Knowledge Accuracy:**', '<b>Product Knowledge Accuracy:</b><br>')
+            .replace('**Sales Acumen:**', '<b>Sales Acumen:</b><br>')
+            .replace('**Feedback:**', '<b>Feedback:</b><br>')
+            .replace('**Strengths:**', '<b>Strengths:</b><br>')
+            .replace('**Areas for Improvement:**', '<b>Areas for Improvement:</b><br>')
+            .replace('**Score:**', '<b>Score:</b> <span class="score">')
+            .replace(/(\d+\/10)/, '$1</span>');
+    }
+
+    function startTalking() {
+        if (recognition) {
+            recognition.start();
+            document.getElementById('chat-text').innerHTML += `
+                <div class="chat-message you"><b>You:</b> Listening...</div>`;
+            document.getElementById('startTalkingBtn').disabled = true;
+            document.getElementById('endTalkingBtn').disabled = false;
+
+            recognition.onresult = function(event) {
+                let interimTranscript = '';
+                let finalTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript + ' ';
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+                document.getElementById('chat-text').innerHTML = `
+                    <div class="chat-message you"><b>You:</b> ${finalTranscript || interimTranscript}</div>`;
+            };
+
+            recognition.onerror = function(event) {
+                console.error("Speech recognition error:", event.error);
+            };
+        }
+    }
+
+    function endTalking() {
+        if (recognition) {
+            recognition.stop();
+            document.getElementById('endTalkingBtn').disabled = true;
+            document.getElementById('submitBtn').disabled = false;
+        }
+    }
+
+    function submitAnswer() {
+        const userText = document.getElementById('chat-text').innerText.trim();
+        if (userText !== "") {
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('analyzingAnimation').style.display = 'flex'; // Show loading animation while waiting for API response
+            sendMessageToRag(userText);
+        }
+    }
+    
+    function sendMessageToRag1(message) {
+        const llm_url = 'https://101.53.149.101/api/v1/workspace/tata-nexon-updated/thread/5be7a317-e8b3-4571-b8aa-5becf3b7a848/chat';
+        const headers = {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer H56YD1H-4QDMHFX-QZN558T-3EV4Y03',
+            'Content-Type': 'application/json'
+        };
+        const data = { message: message, mode: 'query', userId: 1 };
+
+        fetch(llm_url, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('analyzingAnimation').style.display = 'none'; // Hide loading animation
+            const responseText = data.textResponse || "No response from API.";
+            document.getElementById('chat-text').innerHTML += `
+                <div class="chat-message evaluator">
+                    <b>Evaluator:</b><br>
+                    ${formatResponse(responseText)}
+                </div>`;
+            document.getElementById('startTalkingBtn').disabled = false;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('analyzingAnimation').style.display = 'none'; // Hide loading animation
+        });
+    }
+    
+ function saveDataToMySQL(data) {
+    fetch("https://101.53.149.101:3003/save-nexon-data", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        console.log("Nexon Sales Data saved:", responseData);
+    })
+    .catch(error => {
+        console.error("Error saving Nexon Sales Data:", error);
+    });
+}
+
+</script>
+
+</body>
+</html>

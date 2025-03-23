@@ -1,0 +1,46 @@
+.salesperson-sidebar {
+    width: 250px;
+    background: #2f4050;;
+    color: white;
+    padding: 0px;
+    height: 100vh;
+  }
+
+  .salesperson-sidebar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+  }
+
+  .user-logo{
+    width: 100px;
+  }
+  
+  .salesperson-sidebar h2 {
+    text-align: center;
+    margin: 10px;
+    color: white;
+  }
+  
+  .salesperson-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .salesperson-sidebar li {
+    padding: 12px;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  
+  .salesperson-sidebar li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+  }
+  
+  .salesperson-sidebar li:hover {
+    background: #0056b3;
+  }
+  

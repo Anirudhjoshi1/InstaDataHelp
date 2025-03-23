@@ -1,0 +1,130 @@
+/* 🛠 Layout */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+  }
+  
+  /* Content Styling */
+  .content {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+    align-items: center;
+  }
+
+  .content-trainees{
+    width: 80%;
+  }
+  
+  /* Headings */
+  h1 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: "poppins";
+  }
+  
+  /* Search Bar */
+  .search-bar-trainer {
+
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Styled Table */
+  .styled-tablee {
+    width: 92%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background: #007bff;
+    color: white;
+  }
+  
+  /* Trainee Badge */
+  .trainee-badge {
+    background: #161A68;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 5px;
+    display: inline-block;
+  }
+  
+  /* Action Buttons */
+  .edit-btn,
+  .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+  
+  .edit-btn:hover {
+    color: #28a745;
+  }
+  
+  .delete-btn:hover {
+    color: #dc3545;
+  }
+  
+  /* Assign Input & Button */
+  .trainee-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-right: 5px;
+    width: 80%;
+  }
+  
+  .assign-btn {
+    margin-top: 20px;
+    background: #3F7D58;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  .assign-btn:hover {
+    background: #326345;
+  }
+  
+
+
+  .trainer-nav{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .trainer-logo-hai{
+    width: 120px;
+  }

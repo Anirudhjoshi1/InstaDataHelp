@@ -1,0 +1,78 @@
+
+/* Main Container to Prevent Overlapping */
+.report-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Report Content */
+.report-content {
+  padding: 20px 20px;
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Bar Graph Container */
+.chart-container {
+  width: 100%;
+  max-width: 450px; /* Adjust based on layout */
+  margin: 20px auto; /* Centers the chart */
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure Chart is Responsive */
+.recharts-wrapper {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background: #2F4050;
+  color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .report-container {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .salesperson-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .report-content {
+    padding: 20px;
+  }
+}

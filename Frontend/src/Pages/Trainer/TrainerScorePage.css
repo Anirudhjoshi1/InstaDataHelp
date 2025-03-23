@@ -1,0 +1,72 @@
+/* 📌 Score Page Layout */
+.score-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+  }
+  
+  /* 🏆 Score Content */
+  .score-content {
+    flex: 1;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+ 
+  }
+  
+  .score-content h1 {
+    font-size: 28px;
+    color: #2f4050;
+    margin-bottom: 10px;
+  }
+  
+  .score-content h3 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  /* 📊 Score Section */
+  .score-section {
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .score-title {
+    font-size: 20px;
+    color: #2f4050;
+    margin-bottom: 10px;
+  }
+  
+  /* 📋 Score Table */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .score-table th, .score-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .score-table th {
+    background: #2f4050;
+    color: white;
+  }
+  
+  .score-table tr:nth-child(even) {
+    background: #f8f9fa;
+  }
+  
+  .score-table tr:hover {
+    background: #e9ecef;
+    transition: 0.3s;
+  }
+  

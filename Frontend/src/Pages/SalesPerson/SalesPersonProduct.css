@@ -1,0 +1,97 @@
+/* 🌟 Container Layout */
+.product-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fc;
+}
+
+/* 🌟 Main Content Area */
+.product-content {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+
+  width: 85%;
+  text-align: center;
+}
+
+/* 🌟 Header Section */
+.product-header h1, 
+.product-header h2, 
+.product-header h3 {
+  color: #2F4050;
+  margin: 10px 0;
+  font-family: "poppins";
+}
+
+.product-header .icon {
+  color: #161A68;;
+  margin-right: 8px;
+}
+
+/* 🌟 Highlight Text */
+.highlight {
+  background: #161A68;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+/* 🌟 Scores Section */
+.scores-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.scores-section h3 {
+  color: #2F4050;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background: #2f4050;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+/* 🌟 CTA Button */
+
+
+.test-btn1 {
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #2F4050, #2F4050);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+.test-btn1:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,66 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.trainer-logo-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+.trainer-logo{
+    width: 80px;
+}
+
+.sidebar{
+    height: 100vh;
+    width: 250px;
+    background-color: #2f4050 ;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0px;
+}
+
+.SideBarList{
+    height: auto;
+    padding: 10px;
+    width: 90%;
+}
+
+.SideBarList .row{
+    width: 100%;
+    height: 20px;
+    list-style-type: none;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.row #icon {
+    flex: 0%;
+    display: grid;
+    place-items: center;
+}
+
+.row #title {
+    flex: 70%;
+}
+
+.SideBarList .row:hover{
+    cursor: pointer;
+    background-color: #293846;
+}
+
+.SideBarList #active{
+    background-color: #293846;
+}
+
+
+.SidebarHeading{
+    color: white;
+    margin: 10px;
+    margin: 20px;
+}

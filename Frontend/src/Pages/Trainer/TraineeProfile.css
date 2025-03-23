@@ -1,0 +1,48 @@
+/* Layout */
+.profile-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f6f9;
+  }
+  
+  /* Profile Content */
+  .profile-content {
+    flex: 1;
+
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Profile Card */
+  .profile-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Profile Details */
+  .profile-card p {
+    font-size: 16px;
+    color: #333;
+    margin: 8px 0;
+  }
+  
+  /* Headings */
+  .trainee-heading {
+    color: #2f4050;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .trainee-name {
+    font-family: "poppins";
+    font-size: 22px;
+    margin: 10px;
+  }
+  

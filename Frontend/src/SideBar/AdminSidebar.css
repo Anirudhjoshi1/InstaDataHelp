@@ -1,0 +1,47 @@
+.sidebar {
+    width: 250px;
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+  }
+
+  .logo-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+  }
+
+  .admin-logo{
+    width: 80px;
+
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+    color: white;
+    padding: 0px 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 12px;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  
+  .sidebar li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+  }
+  
+  .sidebar li:hover {
+    background: #0b010b;
+  }
+  

@@ -1,0 +1,123 @@
+/* 🌟 Settings Page Layout */
+.settings-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* 🌟 Settings Content Box */
+.settings-content {
+  flex: 1;
+  background: white;
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px 40px;
+}
+
+/* 🌟 Headings */
+h1 {
+  color: #2f4050;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #2f4050;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+/* 🌟 Input Fields */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #2f4050;
+  outline: none;
+  box-shadow: 0 0 8px rgba(47, 64, 80, 0.2);
+}
+
+/* 🌟 Logout Button */
+.logout-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #2f4050, #1e2a35);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 25px;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #1e2a35, #2f4050);
+  box-shadow: 0 5px 15px rgba(47, 64, 80, 0.3);
+  transform: scale(1.03);
+}
+
+/* 🌟 Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 🌟 Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+/* 🌟 Toggle Circle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* 🌟 Toggle Checked State */
+input:checked + .slider {
+  background-color: #28a745;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+  .settings-content {
+      width: 95%;
+      padding: 20px;
+  }
+}

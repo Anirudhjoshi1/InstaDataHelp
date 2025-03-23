@@ -1,0 +1,52 @@
+.profile-container {
+    display: flex;
+  }
+  
+  .profile-content {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .profile-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .profile-info {
+    text-align: left;
+    width: 50%;
+    font-size: 18px;
+  }
+  
+  .profile-info p {
+    margin: 10px 0;
+  }
+  
+  .assigned-products {
+    text-align: left;
+    width: 30%;
+  }
+  
+  .assigned-products ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .assigned-products li {
+    margin: 10px 0;
+  }
+  
+  .assigned-products a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .assigned-products a:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+  
