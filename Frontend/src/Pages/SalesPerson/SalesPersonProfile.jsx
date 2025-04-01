@@ -2,7 +2,7 @@ import React from "react";
 import SalesPersonSidebar from "../../SideBar/SalesPersonSidebar";
 import "./SalesPersonProfile.css";
 import { FaUser, FaEnvelope, FaIdBadge, FaPhone, FaBuilding, FaBox, FaChalkboardTeacher } from "react-icons/fa";
-import Sample from '../../assets/sample.jpg'
+import Sample from '../../assets/Sample.jpg'
 import INSTADATAHELP from '../../assets/INSTADATAHELP.png';
 
 const SalesPersonProfile = () => {

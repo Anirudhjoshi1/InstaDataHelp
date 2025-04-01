@@ -46,7 +46,7 @@ const SalesPersonProduct = () => {
       <SalesPersonSidebar />
       <div className="product-content">
         <div className="product-header">
-          <div className="product-logo">
+          <div className="profile-header">
           <h1><FaBox className="icon" /> Product: Nexon</h1>
           <img src={INSTADATAHELP} alt="" className="imgprofile" />
           </div>
