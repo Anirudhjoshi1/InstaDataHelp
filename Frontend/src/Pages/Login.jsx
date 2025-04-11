@@ -29,7 +29,7 @@ const Login = () => {
     }
 
     try {
-      const url = "http://localhost:8080/auth/login";
+      const url = "http://101.53.149.101:8080/auth/login";
       const response = await fetch(url, {
         method: "POST",
         headers: {
