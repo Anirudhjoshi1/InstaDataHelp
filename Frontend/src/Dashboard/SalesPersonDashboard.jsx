@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SalesPersonSidebar from "../SideBar/SalesPersonSidebar";
 import "./SalesPersonDashboard.css";
 import { FaBox, FaUser, FaChartLine } from "react-icons/fa"; 
@@ -7,6 +7,8 @@ import INSTADATAHELP from '../assets/INSTADATAHELP1.png';
 
 const SalesPersonDashboard = () => {
   const [products] = useState(["Product 1", "Product 2"]);
+
+  const navigate = useNavigate()
 
   return (
     <div className="dashboard-container">
@@ -52,7 +54,7 @@ const SalesPersonDashboard = () => {
           <ul className="product-list">
             {products.map((product, index) => (
               <li key={index} className="product-item">
-                <Link to={`/salesperson/product/${index + 1}`} className="product-link">
+                <Link  className="product-link">
                   {product}
                 </Link>
               </li>
@@ -62,8 +64,19 @@ const SalesPersonDashboard = () => {
 
         {/* Profile & Reports Links */}
         <div className="dashboard-links">
-          <Link to="/salesperson/profile" className="dashboard-btn">👤 View Profile</Link>
-          <Link to="/salesperson/reports" className="dashboard-btn">📊 View Reports</Link>
+          
+        <button class="button-83-pushable" onClick={()=> navigate("/salesperson/profile")}>
+            <span class="button-83-shadow"></span>
+            <span class="button-83-edge"></span>
+            <span class="button-83-front text">👤 View Profile</span>
+          </button>
+
+          <button class="button-83-pushable" onClick={()=> navigate("/salesperson/reports")}>
+            <span class="button-83-shadow"></span>
+            <span class="button-83-edge"></span>
+            <span class="button-83-front text">📊 View Reports</span>
+          </button>
+          
         </div>
 
       </div>

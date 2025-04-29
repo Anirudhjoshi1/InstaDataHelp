@@ -87,8 +87,11 @@ const SalesPersonProduct = () => {
 
         {/* CTA Button */}
         <div className="test-btn-container">
-          <button className="test-btn1" onClick={() => navigate("/salesperson/test-skill")}>
-            🚀 Start New Test
+
+        <button class="button-82-pushable" role="button" onClick={() => navigate("/salesperson/test-skill")} >
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">🚀 Start New Test</span>
           </button>
         </div>
       </div>

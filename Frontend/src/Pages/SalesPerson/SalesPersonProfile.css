@@ -3,6 +3,7 @@
   display: flex;
   min-height: 100vh;
   background: #f4f6f9;
+
 }
 
 
@@ -40,16 +41,16 @@ font-size: 28px;
 
 /* Profile Card */
 .profile-card {
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
   box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
-
   margin: 0 auto;
 }
 
@@ -99,7 +100,7 @@ font-size: 28px;
 
 /* Icons */
 .icon {
-  color: #3F7D58;
+  color: #2F4050;
   font-size: 18px;
 }
 
@@ -128,4 +129,8 @@ font-size: 28px;
 
 .products-list li:hover {
   background: #24313d;
+}
+
+.test-btn-container{
+  margin-top: 50px;
 }

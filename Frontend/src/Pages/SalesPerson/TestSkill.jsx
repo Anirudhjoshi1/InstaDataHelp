@@ -9,6 +9,13 @@ const TestSkill = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [userMessage, setUserMessage] = useState("");
   const [listeningIndicator, setListeningIndicator] = useState(false);
+  const [testStarted, setTestStarted] = useState(false);
+
+  const [buttonsState, setButtonsState] = useState({
+    startEnabled: false,
+    stopEnabled: false,
+    submitEnabled: false
+  });
 
   useEffect(() => {
     if (annyang) {
@@ -31,15 +38,15 @@ const TestSkill = () => {
     }
   }, []);
 
-  const startTest = () => {
-    sendMessageToAPI("hi");
-    setIsLoading(true);
-  };
-
   const startTalking = () => {
     if (annyang) {
       setIsRecording(true);
       annyang.start();
+      setButtonsState({
+        startEnabled: true,
+        stopEnabled: true,
+        submitEnabled: true
+      });
     } else {
       alert("❌ Speech Recognition is not supported in this browser.");
     }
@@ -81,13 +88,29 @@ const TestSkill = () => {
       setChatMessages([
         ...chatMessages,
         { sender: "You", text: message },
-        { sender: "Evaluator", text: data.textResponse || "No response from API." },
+        {
+          sender: "Evaluator",
+          text: data.textResponse || "No response from API.",
+        },
       ]);
     } catch (error) {
       console.error("Error:", error);
     }
 
     setIsLoading(false);
+  };
+
+  const startTest = () => {
+    sendMessageToAPI("hi");
+    setIsLoading(true);
+    setTestStarted(true);
+
+    // After test starts, only Start Talking should be enabled
+    setButtonsState({
+      startEnabled: true,
+      stopEnabled: false,
+      submitEnabled: false
+    });
   };
 
   return (
@@ -98,15 +121,16 @@ const TestSkill = () => {
 
         {/* 🎤 Listening Indicator */}
         {listeningIndicator && (
-          <div className="listening-indicator">
-            🎤 Listening... Speak Now
-          </div>
+          <div className="listening-indicator">🎤 Listening... Speak Now</div>
         )}
 
         {/* 📝 Chat Screen */}
         <div className="chat-screen">
           {chatMessages.map((msg, index) => (
-            <div key={index} className={`chat-message ${msg.sender.toLowerCase()}`}>
+            <div
+              key={index}
+              className={`chat-message ${msg.sender.toLowerCase()}`}
+            >
               <strong>{msg.sender}: </strong> {msg.text}
             </div>
           ))}
@@ -124,22 +148,52 @@ const TestSkill = () => {
           placeholder="You can also type here"
           value={userMessage}
           onChange={(e) => setUserMessage(e.target.value)}
+          disabled={!testStarted}
         ></textarea>
 
         {/* 🎛️ Buttons */}
         <div className="buttons-container">
-          <button className="test-btn" onClick={startTest}>
-            🚀 Test My Skill
-          </button>
-          <button className="test-btn" onClick={startTalking} disabled={isRecording}>
-            🎤 Start Talking
-          </button>
-          <button className="test-btn" onClick={stopTalking} disabled={!isRecording}>
-            🛑 Stop Talking
-          </button>
-          <button className="test-btn" onClick={submitAnswer} disabled={!userMessage.trim()}>
-            ✅ Submit
-          </button>
+          {!testStarted && (
+            <button className="button-82-pushable" onClick={startTest}>
+              <span className="button-82-shadow"></span>
+              <span className="button-82-edge"></span>
+              <span className="button-82-front text">🚀 Test My Skill</span>
+            </button>
+          )}
+
+          {testStarted && (
+            <>
+              <button
+                className={`button-82-pushable ${!buttonsState.startEnabled ? "disabled-button" : ""}`}
+                onClick={startTalking}
+                disabled={!buttonsState.startEnabled}
+              >
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">🎤 Start Talking</span>
+              </button>
+
+              <button
+                className={`button-82-pushable ${!buttonsState.stopEnabled ? "disabled-button" : ""}`}
+                onClick={stopTalking}
+                disabled={!buttonsState.stopEnabled}
+              >
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">🛑 Stop Talking</span>
+              </button>
+
+              <button
+                className={`button-82-pushable ${!buttonsState.submitEnabled ? "disabled-button" : ""}`}
+                onClick={submitAnswer}
+                disabled={!buttonsState.submitEnabled}
+              >
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">✅ Submit</span>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

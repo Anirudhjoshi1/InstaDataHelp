@@ -65,7 +65,8 @@ const SalesPersonSettings = () => {
         </div>
 
         {/* Logout Button */}
-        <button className="logout-btn" onClick={handleLogout}>🚪 Logout</button>
+     
+        <button  className="logout-btn" onClick={handleLogout}>🚪 Logout</button>
       </div>
     </div>
   );
